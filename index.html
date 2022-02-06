@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Що вміють українці?</title>
+    <link rel="stylesheet" href="/styles.css">
+
+    <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1>Що вміють українці?</h1>
+    <p class="bigleading">Цікаво ж, правда? Поділись своїми вміннями, щоб ми могли зібрати більше даних!</p>
+    <div class="content">
+
+        <div id="myChartContainer">
+
+            <canvas id="myChart1"></canvas>
+        </div>
+
+        <form action="" class="skillsSubmitForm" id="skillsSubmit">
+            <h2>А що вмієш ти?</h2>
+            <div class="inputgroup"><label class='label' for="skillsInput" >Мої навички<span class="asterisk">*</span></label>
+                <textarea class="focusInput" name='skillsInput' id="skillsInput" type="text" placeholder="варити каву, любити україну" required></textarea>
+            <p class="small-description">Вводь скільки завгодно, тільки розділяй комами!</p></div>
+            <div class="inputgroup"><label class='label' for="username">Імʼя</label>
+                <input class="focusInput" name='username' id="username" type="text" placeholder="Тарас"></div>
+            <div class="inputgroup"> <label class='label' for="usermail">Пошта</label>
+                <input class="focusInput" name='usermail' id="usermail" type="email" placeholder="shevchenko@mail.ua">
+                <p class="small-description">Поділись своєю поштою, щоб ми могли створити твій акаунт та звʼязати введені дані</p>
+            </div>
+                <div class="inputgroup"> <label class='label' for="usercity">Де ти живеш?<span class="asterisk">*</span></label>
+                    <input class="focusInput" name='usercity' id="usercity" type="text" placeholder=" Київ" required>
+                    <p class="small-description">А це нам треба для того, щоб мати можливість надати статистику за навичками у містах</p>
+                </div>
+
+            <button type="button" class="focusButton">Надіслати</button>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

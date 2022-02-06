@@ -1,0 +1,21 @@
+{
+  "name": "ukrainianskills",
+  "version": "1.0.0",
+  "description": "Простий проект, де ти можеш вказати що ти вмієш, та побачити що вміють інші",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Klymov",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "jshint": "^2.13.4"
+  },
+  "devDependencies": {
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2"
+  }
+}

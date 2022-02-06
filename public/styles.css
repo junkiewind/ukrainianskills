@@ -1,0 +1,157 @@
+/* @import './fonts/eUkraine/stylesheet.css'; */
+@import './fonts/fonts.css';
+
+
+
+
+
+
+:root {
+    --ua-yellow: #FAD749;
+    --ua-blue: #1D59B1;
+  }
+
+* {
+    font-family: 'e-ukraine_Regular';
+    /* font-weight:300; */
+    color: #fff;
+}
+h1, h2, h3, h4 {
+    font-family: 'e-ukraine_headRegular';
+}
+body {
+    text-align: center;
+    background-blend-mode: screen;
+    background-repeat: no-repeat;
+    background: #164488;
+    /* position: relative; */
+    padding: 0;
+    margin: 0;
+    /* background-blend-mode: screen; */
+    /* mix-blend-mode: screen; */
+}
+body:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.48;
+    background-image: url('https://images.unsplash.com/photo-1592554722895-f54ab5e5c9b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80');
+    /* background-repeat: no-repeat; */
+    /* background-position: 50% 0; */
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: -1;
+    margin: 0;
+    padding: 0;
+  }
+#myChartContainer {
+display: inline-block;
+width: 600px;
+padding: 40px;
+}
+
+.content {
+    padding: 24px 128px;
+    width: 1200px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.skillsSubmitForm {
+    width: 480px;
+    background-color: #fff;
+    padding: 20px 80px 64px 80px;
+    border-radius: 24px;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.label {
+    color: #777;
+    margin-bottom: 4px;
+    font-family: 'e-Ukraine_Light';
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.inputgroup {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    
+}
+
+.skillsSubmitForm > * {
+    color: #333;
+
+}
+.focusInput {
+    font-size: 16px;
+    padding: 16px 20px;
+    border: none;
+    background-color: #5988cf;
+    /* transform: translateX(100%); */
+}
+.asterisk {
+    color: red;
+}
+
+::placeholder {
+    color: rgba(255,255,255,0.64);
+    font-family: 'e-ukraine_Thin';
+
+  }
+
+.focusInput:hover {
+    background-color: #3d71c0;
+}
+
+.focusInput:focus {
+    background-color:  #28518d;
+}
+.focusButton {
+    font-size: 18px;
+    color: #fff;
+    padding: 16px 24px;
+    background-color: hsl(216, 64%, 32%);
+    border: none;
+    margin-top: 32px;
+    cursor: pointer;
+}
+.focusButton:hover {
+    background-color: hsl(216, 80%, 64%);
+}
+
+.bigleading {
+    font-size: 18px;    
+    opacity: 90%;
+    font-family: 'e-ukraine_Thin';
+}
+
+/* typography */
+h1 {
+    font-size:  64px;
+    margin-top: 80px;
+    margin-bottom: 0;
+    font-family: 'e-ukraine_headMedium'
+    
+}
+h2 {
+    font-size: 36px;
+    
+}
+
+.small-description {
+    font-size: 12px;
+    color: #333;
+    margin: 4px 0;
+    padding: 0 20px;
+}
