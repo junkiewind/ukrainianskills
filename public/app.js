@@ -2,7 +2,12 @@ window.onload = function () {
   let dataForChart = {};
 
   function getSkillsData() {
-    fetch('http://localhost:3000/data')
+    fetch('http://164.92.226.113:3000/data', {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin':'*'
+      }})
       .then(response => response.text())
       .then(data => {
         dataForChart = JSON.parse(data);
@@ -101,7 +106,7 @@ window.onload = function () {
   let usercity = document.getElementById('usercity');
   btn.addEventListener('click', function () {
     console.log(skillsInput.value);
-    postData('http://localhost:3000/skills', {
+    postData('http://164.92.226.113:3000/skills', {
         skills: skillsInput.value,
         username: username.value,
         usermail: usermail.value,

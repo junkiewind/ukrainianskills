@@ -12,8 +12,12 @@ app.use(express.json());
 app.use(express.static('public')); 
 app.use(express.static('public/fonts/')); 
 var corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+ origin: '*',
+ optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204,
+ setHeaders: function (res, path, stat) {
+  res.set('x-allowed-origin', Date.now());
+  res.set('Access-Control-Allow-Origin', '*');
+}
 };
 
 
@@ -27,6 +31,7 @@ app.get('/', function(req, res) {
 let dataToSend = '';
 app.get('/data', function(req, res) {
   const python = spawn('python3', ['python/datanalysis.py']);
+
     // collect data from script
     res.type('json');
     python.stdout.on('data', function (data) {
