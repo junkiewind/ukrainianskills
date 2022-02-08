@@ -112,4 +112,8 @@ window.onload = function () {
       });
   });
 
+  const testing = () => {
+    console.log('Wow')
+  }
+
 }

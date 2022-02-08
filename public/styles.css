@@ -50,28 +50,32 @@ body:before {
   }
 #myChartContainer {
 display: inline-block;
-width: 600px;
+width: 100%;
 padding: 40px;
+padding-left: 80px
+padding-top: 120px;
 }
 
 .content {
-    padding: 24px 128px;
-    width: 1200px;
+    width: 100%;
     display: inline-flex;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
 }
+.leftareaheader {
 
+}
 .skillsSubmitForm {
     width: 480px;
+    height: 100vh;
     background-color: #fff;
     padding: 20px 80px 64px 80px;
-    border-radius: 24px;
+    /* border-radius: 24px; */
     display: inline-flex;
     flex-direction: column;
     text-align: left;
-    justify-content: space-between;
-    overflow: hidden;
+    justify-content: center;
+    align-items: start;
 }
 .label {
     color: #777;
