@@ -2,7 +2,7 @@ window.onload = function () {
   let dataForChart = {};
 
   function getSkillsData() {
-    fetch('http://localhost:3000/data')
+    fetch('/data')
       .then(response => response.text())
       .then(data => {
         dataForChart = JSON.parse(data);
@@ -37,14 +37,14 @@ window.onload = function () {
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
-        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/json'
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       redirect: 'follow', // manual, *follow, error
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
-    return response.json(); // parses JSON response into native JavaScript objects
+    return response; // parses JSON response into native JavaScript objects
   }
   // postData('http://localhost:3000/skills', {
   //     answer: 42
@@ -71,13 +71,12 @@ window.onload = function () {
       backgroundColor: 'transparent',
       cutout: '45%',
       radius: '80%',
-      padding: 40,
       hoverBackgroundColor: 'yellow',
       borderWidth: 0,
       borderColor: 'transparent',
       plugins: {
         legend: {
-          position: 'bottom',
+          position: 'right',
           align: 'center',
           labels: {
             boxWidth: 16,
@@ -94,26 +93,29 @@ window.onload = function () {
   };
   const myChart = new Chart(chartEl, config);
   getSkillsData();
-  const btn = document.querySelector('button');
+  const btn = document.getElementById('sendSkills');
   let skillsInput = document.getElementById('skillsInput');
   let username = document.getElementById('username');
   let usermail = document.getElementById('usermail');
   let usercity = document.getElementById('usercity');
-  btn.addEventListener('click', function () {
-    console.log(skillsInput.value);
-    postData('http://localhost:3000/skills', {
-        skills: skillsInput.value,
-        username: username.value,
-        usermail: usermail.value,
-        usercity: usercity.value
-      }).then(getSkillsData())
-      .then(data => {
-        console.log(data); // JSON data parsed by `data.json()` call
-      });
-  });
+  // btn.addEventListener('click', function () {
+  //   postData('/skills', {
+  //       skills: skillsInput.value,
+  //       username: username.value,
+  //       usermail: usermail.value,
+  //       usercity: usercity.value
+  //     }).then(getSkillsData())
+  //     .then(data => {
+  //       console.log(data); // JSON data parsed by `data.json()` call
+  //     });
+  // });
 
   const testing = () => {
     console.log('Wow')
   }
 
+}
+const nextFormStep  = () => {
+  console.log('clicked')
+  document.getElementById("formSecondStep").setAttribute("transform", "none;")
 }
