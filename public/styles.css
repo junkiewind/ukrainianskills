@@ -15,7 +15,7 @@
     font-family: 'e-ukraine_Light';
     /* font-weight:300; */
     color: #fff;
-    transition: all ease 120;
+    transition: all 120ms ease;
 }
 h1, h2, h3, h4 {
     font-family: 'e-ukraine_headRegular';
@@ -50,44 +50,105 @@ body:before {
     padding: 0;
   }
 #myChartContainer {
-    /* width: 600px; */
-    /* position: relative;  */
-    /* height: 48vh;  */
-    display: inline-block;
-    width:640px;
+    width: 640px;
+    /* height: 64vh; */
+    position: relative; 
+    /* height: 480px;  */
+    /* display: inline-block; */
+    /* width:640px; */
+
 }
 #myChart1 {
     
 }
+
+.skillsCount {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-80%);
+}
+.skillCount {
+    padding: 0px;
+    margin-bottom: 24px;
+}
+.skillCountlabel {
+padding: 0px;
+margin: 0;
+}
+
+.skillCountValue {
+    font-size: 24px;
+    font-family: 'e-Ukraine_headBold';
+    margin: 0;
+    padding: 0px;
+}
+
+
 .content {
     width: 100%;
-    display: inline-flex;
-    align-items: start;
-    justify-content: space-between;
+    display: flex;
+    align-content: center;
+    align-items: stretch;
+    justify-content:space-between;
     position: relative;
 }
 .leftareaheader {
     /* display: inline-block; */
     /* width: 100%;  */
     height: 100vh;
-    position: relative;
+    /* position: relative; */
     padding: 40px;
     padding-left: 80px; 
     /* padding-top: 120px; */
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column ;
+    /* align-items: stretch; */
+    flex-grow: 4;
 }
 .skillsSubmitForm {
-    width: 480px;
+    max-width: 480px;
     height: 100vh;
     background-color: #fff;
-    padding: 20px 80px 64px 80px;
+    padding: 0 64px;
     /* border-radius: 24px; */
     display: inline-flex;
     flex-direction: column;
     text-align: left;
     justify-content: center;
-    align-items: start;
+    align-items: stretch;
     position: relative;
+    flex-grow: 1;
+    overflow: hidden;
 }
+
+.formSection {
+    display: inline-flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    align-items: justify;
+    position: relative;
+    /* flex-grow: 1; */
+    padding: 24px 0;
+    transition: all 1s ease;
+    transition: transform 1s ease;
+}
+.formSection1 {}
+.formSection2 {
+    display: none;
+    /* visibility: collapse; */
+    /* transform: translateY(120%); */
+    /* opacity: 0; */
+
+}
+.formSectionSuccess {
+    display: none;
+    
+}
+
 .label {
     color: #777;
     margin-bottom: 4px;
@@ -101,7 +162,7 @@ body:before {
     align-items: stretch;
     /* justify-content: space-between; */
     margin-bottom: 16px;
-    width: 100%;
+    /* width: 100%; */
     
 }
 
@@ -116,12 +177,12 @@ body:before {
     border: none;
     border-radius: 16px;
     background-color: #5988cf;
-    width: 100%;
+    /* width: 100%; */
     /* transform: translateX(100%); */
 }
 .focusTextarea {
     border-radius: 24px;
-    width: 100%;
+    /* width: 100%; */
     /* margin: 16px 0; */
     height: 128px;
     /* padding: 32px 32px; */
@@ -154,9 +215,18 @@ body:before {
     cursor: pointer;
 }
 
+.secondaryButton {
+    background-color: transparent;
+    color: hsl(216, 64%, 32%);
+}
+
 
 .focusButton:hover {
     background-color: hsl(216, 80%, 64%);
+}
+
+.secondaryButton:hover {
+    background-color: hsl(216, 90%, 85%);
 }
 
 .bigleading {
@@ -165,21 +235,26 @@ body:before {
     font-family: 'e-ukraine_Thin';
 }
 
-#formSecondStep {
-    
-}
+
 
 .formIllistrration  {
     position: absolute;
-    bottom: 10%;
+    bottom: 0;
+    right: 0;
     z-index: 1;
-    opacity: 12%;
+    opacity: 24%;
     /* filter: grayscale(); */
-    filter: hue-rotate(25) ;
-    filter: brightness(0);
+    /* filter: hue-rotate(25) ;
+    filter: brightness(0); */
     /* filter: blur(1px); */
     /* filter: contrast(20); */
 }
+.successImg {
+    width: 256px;
+    height: 256px;
+}
+
+
 
 /* typography */
 h1 {
@@ -191,8 +266,8 @@ h1 {
 }
 h2 {
     font-size: 36px;
-    font-family: 'e-ukraine_headBold'
-    
+    font-family: 'e-ukraine_headBold';
+    color: #333;
 }
 
 .small-description {
@@ -200,4 +275,8 @@ h2 {
     color: #333;
     margin: 4px 0;
     padding: 0 20px;
+}
+
+.textDark {
+    color: #333;
 }

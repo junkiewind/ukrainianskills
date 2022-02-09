@@ -1,5 +1,5 @@
 window.onload = function () {
-  let dataForChart = {};
+  let dataForChart = {}
 
   function getSkillsData() {
     fetch('/data')
@@ -60,7 +60,7 @@ window.onload = function () {
     datasets: [{
       label: 'My First Dataset',
       data: [],
-      backgroundColor: ['#1d59b1', '#009fb7',' #fad749', '#a4243b', '#ab92bf', '#a9ffcb', '#eb4511', '#fa7921', '#d62839'],
+      backgroundColor: ['#1d59b1', '#009fb7', ' #fad749', '#a4243b', '#ab92bf', '#a9ffcb', '#eb4511', '#fa7921', '#d62839'],
       hoverOffset: 24
     }]
   };
@@ -76,7 +76,7 @@ window.onload = function () {
       borderColor: 'transparent',
       plugins: {
         legend: {
-          position: 'right',
+          position: 'bottom',
           align: 'center',
           labels: {
             boxWidth: 16,
@@ -93,29 +93,44 @@ window.onload = function () {
   };
   const myChart = new Chart(chartEl, config);
   getSkillsData();
-  const btn = document.getElementById('sendSkills');
+  const btn = [...document.getElementsByClassName('sendSkills')];
+
+  const nextBtn = document.getElementById('nextBtn');
+  const backBtn = document.getElementById('backBtn');
+  const formSection1 = document.getElementById('formSection1');
+  const formSection2 = document.getElementById('formSection2');
+  const formSectionSuccess = document.getElementById('formSectionSuccess');
+  nextBtn.addEventListener('click', () => {
+
+    formSection1.style.display = "none"
+    formSection2.style.display = "inline-flex"
+  })
+
+  backBtn.addEventListener('click', () => {
+    formSection1.style.display = "inline-flex"
+    formSection2.style.display = "none"
+    formSectionSuccess.style.display = "none"
+  })
+
   let skillsInput = document.getElementById('skillsInput');
   let username = document.getElementById('username');
   let usermail = document.getElementById('usermail');
   let usercity = document.getElementById('usercity');
-  // btn.addEventListener('click', function () {
-  //   postData('/skills', {
-  //       skills: skillsInput.value,
-  //       username: username.value,
-  //       usermail: usermail.value,
-  //       usercity: usercity.value
-  //     }).then(getSkillsData())
-  //     .then(data => {
-  //       console.log(data); // JSON data parsed by `data.json()` call
-  //     });
-  // });
+  btn.forEach(element => {
+    element.addEventListener('click', function () {
+      let skillsForm = document.querySelector('form')
+      let skillsFormData = {};
+      new FormData(skillsForm).forEach((value, key) => skillsFormData[key] = value);
 
-  const testing = () => {
-    console.log('Wow')
-  }
+      console.log('skillsFormData', {skillsFormData})
+      postData('/skills', skillsFormData).then(getSkillsData())
+        .then(data => {
+          console.log(data); // JSON data parsed by `data.json()` call
+          formSection1.style.display = "none"
+          formSection2.style.display = "none"
+          formSectionSuccess.style.display = "inline-flex"
+        });
 
-}
-const nextFormStep  = () => {
-  console.log('clicked')
-  document.getElementById("formSecondStep").setAttribute("transform", "none;")
+    })
+  });
 }

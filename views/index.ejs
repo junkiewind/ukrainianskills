@@ -17,9 +17,19 @@
     <div class="content">
         <div class="leftareaheader">
 
-            <p><%= Date()%></p>
+            <!-- <p class="small-description"><%= Date()%></p> -->
             <div id="myChartContainer">
                 <canvas id="myChart1"></canvas>
+                <div class="skillsCount">
+                    <div class="skillCount">
+                        <p class="skillCountlabel">Навичок</p>
+                        <p class="skillCountValue">344</p>
+                    </div>
+                    <div class="skillCount">
+                        <p class="skillCountlabel">Людей</p>
+                        <p class="skillCountValue">122</p>
+                    </div>
+                </div>
             </div>
             <div class="">
                 <h1>Що вміють українці?</h1>
@@ -29,29 +39,50 @@
 
 
         <form action="/skills" method="POST" class="skillsSubmitForm" id="skillsSubmit">
-            <h2>А що вмієш ти?</h2>
-            <div class="inputgroup"><label class='label' for="skillsInput">Мої навички<span
-                        class="asterisk">*</span></label>
-                <textarea class="focusInput focusTextarea" name='skillsInput' id="skillsInput" type="text"
-                    placeholder="варити каву, любити україну" required></textarea>
-                <p class="small-description">Вводь скільки завгодно, тільки розділяй комами!</p>
+            
+            <div class="formSection formSection1" id="formSection1">
+                <h2>А що вмієш ти?</h2>
+                <div class="inputgroup"><label class='label' for="skillsInput">Мої навички<span
+                            class="asterisk">*</span></label>
+                    <textarea class="focusInput focusTextarea" name='skillsInput' id="skillsInput" type="text"
+                        placeholder="варити каву, любити україну" required></textarea>
+                    <p class="small-description">Вводь скільки завгодно, тільки розділяй комами!</p>
+                </div>
+                <div class="inputgroup"> <label class='label' for="usercity">Де ти живеш?<span
+                            class="asterisk">*</span></label>
+                    <input class="focusInput" name='usercity' id="usercity" type="text" placeholder=" Київ" required>
+                    <p class="small-description">Це нам треба для того, щоб мати можливість надати статистику за
+                        навичками у містах</p>
+                </div>
+                <button type="button" class="focusButton" id="nextBtn">Надіслати та створити акаунт</button>
+                <button type="button" class="focusButton sendSkills secondaryButton" id="sendSkills">Просто надіслати</button>
             </div>
-            <div class="inputgroup"><label class='label' for="username">Імʼя</label>
-                <input class="focusInput" name='username' id="username" type="text" placeholder="Тарас"></div>
-            <div class="inputgroup"> <label class='label' for="usermail">Пошта</label>
-                <input class="focusInput" name='usermail' id="usermail" type="email" placeholder="shevchenko@mail.ua">
-                <p class="small-description">Поділись своєю поштою, щоб ми могли створити твій акаунт та звʼязати
-                    введені дані</p>
+            <div class="formSection formSection2" id="formSection2">
+                <h2>Трішки про тебе</h2>
+                <div class="inputgroup"><label class='label' for="username">Імʼя</label>
+                    <input class="focusInput" name='username' id="username" type="text" placeholder="Тарас"></div>
+                <div class="inputgroup"> <label class='label' for="usermail">Пошта</label>
+                    <input class="focusInput" name='usermail' id="usermail" type="email"
+                        placeholder="shevchenko@mail.ua">
+                    <p class="small-description">Поділись своєю поштою, щоб ми могли створити твій акаунт та звʼязати
+                        введені дані</p>
+                </div>
+                
+
+                <button type="submit" class="focusButton sendSkills" id="sendSkills">Надіслати</button>
             </div>
-            <div class="inputgroup"> <label class='label' for="usercity">Де ти живеш?<span
-                        class="asterisk">*</span></label>
-                <input class="focusInput" name='usercity' id="usercity" type="text" placeholder=" Київ" required>
-                <p class="small-description">А це нам треба для того, щоб мати можливість надати статистику за навичками у містах</p>
+            <div class="formSection formSectionSuccess" id="formSectionSuccess">
+                
+                <h2>Дані надіслано</h2>
+                <img src="img/celebrate.png" class="successImg" alt="">
+                <p class="bigleading textDark">Дякуємо за те, що ти поділився!</p>
+                <p class="textDark">Через декий час ми запустимо розширену статистику та додамо кабінет користувача, де ти зможеш відстежувати свої навички чи  наички своїх друзів</p>
+                 <button type="button" class="focusButton" id="backBtn">Назад</button>
             </div>
 
-            <button type="submit" class="focusButton" id="sendSkills">Надіслати</button>
+
             <!-- <button type="button" class="focusButton" onclick="nextFormStep()">Далі</button> -->
-            <img class="formIllistrration" src="img/formIllistrration2.png" alt="">
+            <img class="formIllistrration" src="img/formIllistrration.svg" alt="">
         </form>
     </div>
 

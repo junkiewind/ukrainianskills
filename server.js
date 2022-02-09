@@ -54,12 +54,12 @@ app.post('/skills', (req, res) => {
           console.log(`child process close all stdio with code ${code}`);
           // send data to browser
       });
-      res.redirect('/')
+    //   res.redirect('/')
   });
 
 app.use(express.static("public"))
 
-const port = 8080
+const port = 80
 app.listen(port, () => {
     console.log(`Experss in running on port  ${port}`)
 })
