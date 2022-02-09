@@ -25,6 +25,9 @@ window.onload = function () {
     dataForChart.data.forEach((item) => {
       myChart.data.datasets[0].data.push(item.skillId);
     });
+    console.log('myChart.data.totalSkills', dataForChart.data.totalSkills)
+    document.getElementById("skillsCount").innerText = dataForChart.totalSkills
+    document.getElementById("usersCount").innerText = dataForChart.totalUsers
     myChart.update();
   }
 
