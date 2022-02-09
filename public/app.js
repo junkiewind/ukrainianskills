@@ -91,38 +91,101 @@ window.onload = function () {
   const formSection1 = document.getElementById('formSection1');
   const formSection2 = document.getElementById('formSection2');
   const formSectionSuccess = document.getElementById('formSectionSuccess');
+  let skillsInput = document.getElementById('skillsInput');
+  let username = document.getElementById('username');
+  let usermail = document.getElementById('usermail');
+  let usercity = document.getElementById('usercity');
+  let step2 = false
   nextBtn.addEventListener('click', () => {
-
-    formSection1.style.display = "none"
-    formSection2.style.display = "inline-flex"
+    if (skillsInput.validity.valid && usercity.validity.valid) {
+      formSection1.style.display = "none"
+      formSection2.style.display = "inline-flex"
+      skillsInput.setCustomValidity("");
+      usercity.setCustomValidity("");
+      step2 = true
+      usermail.setAttribute('required', 'true')
+    } else {
+      if (skillsInput.validity.valid == false) {
+        skillsInput.setCustomValidity("Спочатку розкажи, що ти вмієш");
+        skillsInput.reportValidity();
+        skillsInput.setCustomValidity("");
+      }
+      if (usercity.validity.valid == false) {
+        usercity.setCustomValidity("Вкажи своє місто!");
+        usercity.reportValidity();
+        usercity.setCustomValidity("");
+      }
+    }
   })
 
   backBtn.addEventListener('click', () => {
     formSection1.style.display = "inline-flex"
     formSection2.style.display = "none"
     formSectionSuccess.style.display = "none"
+    usermail.removeAttribute('required')
+    skillsInput.value = ''
   })
 
-  let skillsInput = document.getElementById('skillsInput');
-  let username = document.getElementById('username');
-  let usermail = document.getElementById('usermail');
-  let usercity = document.getElementById('usercity');
+
   btn.forEach(element => {
     element.addEventListener('click', function () {
       let skillsForm = document.querySelector('form')
       let skillsFormData = {};
-      new FormData(skillsForm).forEach((value, key) => skillsFormData[key] = value);
+      if (step2 === true) {
+        //check second pair  only
+        if (username.validity.valid && usermail.validity.valid) {
 
-      console.log('skillsFormData', {
-        skillsFormData
-      })
-      postData('/skills', skillsFormData).then(getSkillsData())
-        .then(data => {
-          console.log(data);
+          usermail.setCustomValidity("");
+          username.setCustomValidity("");
+          
+          new FormData(skillsForm).forEach((value, key) => skillsFormData[key] = value);
+
+          console.log('skillsFormData', {
+            skillsFormData
+          })
+          postData('/skills', skillsFormData).then(getSkillsData())
+            .then(data => {
+              console.log(data);
+              formSection1.style.display = "none"
+              formSection2.style.display = "none"
+              formSectionSuccess.style.display = "inline-flex"
+            });
+        } else {
+          if (username.validity.valid == false) {
+            username.setCustomValidity("Вкажи ім'я!");
+            username.reportValidity();
+            username.setCustomValidity("");
+          }
+          if (usermail.validity.valid == false) {
+            usermail.setCustomValidity("Вкажи своє місто!");
+            usermail.reportValidity();
+            usermail.setCustomValidity("");
+          }
+        }
+      } else {
+        //check first part only
+        if (skillsInput.validity.valid && usercity.validity.valid) {
           formSection1.style.display = "none"
-          formSection2.style.display = "none"
-          formSectionSuccess.style.display = "inline-flex"
-        });
+          formSection2.style.display = "inline-flex"
+          skillsInput.setCustomValidity("");
+          usercity.setCustomValidity("");
+          step2 = true
+        } else {
+          if (skillsInput.validity.valid == false) {
+            skillsInput.setCustomValidity("Спочатку розкажи, що ти вмієш");
+            skillsInput.reportValidity();
+            skillsInput.setCustomValidity("");
+          }
+          if (usercity.validity.valid == false) {
+            usercity.setCustomValidity("Вкажи своє місто!");
+            usercity.reportValidity();
+            usercity.setCustomValidity("");
+          }
+        }
+      }
+
+
+
 
     })
   });
