@@ -368,7 +368,13 @@ h1 {
     font-family: 'e-ukraine_headMedium'
 
 }
+input {
+    color: #fff
+}
 
+textarea {
+    color:#fff
+}
 h2 {
     font-size: 28px;
     font-family: 'e-ukraine_headBold';
