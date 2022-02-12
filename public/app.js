@@ -1,6 +1,6 @@
 window.onload = function () {
   let dataForChart = {}
-
+  console.log('Host: ', window.location.host)
   function getSkillsData() {
     fetch('/data')
       .then(response => response.text())
@@ -67,8 +67,11 @@ window.onload = function () {
       borderColor: 'transparent',
       plugins: {
         legend: {
+          display : true,
+          maxHeight: '80',
           position: 'bottom',
           align: 'center',
+          // maxHeight: 100,
           labels: {
             boxWidth: 16,
             boxHeight: 16,
@@ -95,7 +98,7 @@ window.onload = function () {
   let username = document.getElementById('username');
   let usermail = document.getElementById('usermail');
   let usercity = document.getElementById('usercity');
-  let step2 = false
+  
   nextBtn.addEventListener('click', () => {
     if (skillsInput.validity.valid && usercity.validity.valid) {
       formSection1.style.display = "none"
@@ -128,10 +131,11 @@ window.onload = function () {
 
 
   btn.forEach(element => {
-    element.addEventListener('click', function () {
+    element.addEventListener('click', function (e) {
       let skillsForm = document.querySelector('form')
       let skillsFormData = {};
-      if (step2 === true) {
+      console.log('Element', e.target.id)
+      if (e.target.id === 'sendSkills') {
         //check second pair  only
         if (username.validity.valid && usermail.validity.valid) {
 
@@ -162,14 +166,27 @@ window.onload = function () {
             usermail.setCustomValidity("");
           }
         }
-      } else {
+      } else if (e.target.id === 'justSendSkills'){
         //check first part only
         if (skillsInput.validity.valid && usercity.validity.valid) {
           formSection1.style.display = "none"
-          formSection2.style.display = "inline-flex"
+          formSection2.style.display = "none"
+          formSectionSuccess.style.display = "inline-flex"
           skillsInput.setCustomValidity("");
           usercity.setCustomValidity("");
-          step2 = true
+                    
+          new FormData(skillsForm).forEach((value, key) => skillsFormData[key] = value);
+
+          console.log('skillsFormData', {
+            skillsFormData
+          })
+          postData('/skills', skillsFormData).then(getSkillsData())
+            .then(data => {
+              console.log(data);
+              formSection1.style.display = "none"
+              formSection2.style.display = "none"
+              formSectionSuccess.style.display = "inline-flex"
+            });
         } else {
           if (skillsInput.validity.valid == false) {
             skillsInput.setCustomValidity("Спочатку розкажи, що ти вмієш");
@@ -189,4 +206,20 @@ window.onload = function () {
 
     })
   });
+
 }
+  const  copytoclipboard = () => {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+    /* clipboard successfully set */
+    console.log('ok')
+    document.getElementById('copytoclipboardBtn').innerText = 'Скопійовано!';
+    setTimeout(() => {
+      document.getElementById('copytoclipboardBtn').innerText = 'Скопіювати посилання'
+    }, 2000);
+  }, function() {
+    console.log('clipboard write failed')/* clipboard write failed */
+    document.getElementById('copytoclipboardBtn').innerText = 'Помилка 😢';
+    document.getElementById('copytoclipboardBtn').style.backgroundColor = "red"
+    document.getElementById('copytoclipboardBtn').setAttribute('disabled', 'true')
+  });
+  }
