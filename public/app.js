@@ -105,7 +105,6 @@ window.onload = function () {
       formSection2.style.display = "inline-flex"
       skillsInput.setCustomValidity("");
       usercity.setCustomValidity("");
-      step2 = true
       usermail.setAttribute('required', 'true')
     } else {
       if (skillsInput.validity.valid == false) {
@@ -136,11 +135,11 @@ window.onload = function () {
       let skillsFormData = {};
       console.log('Element', e.target.id)
       if (e.target.id === 'sendSkills') {
-        //check second pair  only
+        //check second pair only
         if (username.validity.valid && usermail.validity.valid) {
 
           usermail.setCustomValidity("");
-          username.setCustomValidity("");
+          username.setCustomValidity(""); 
           
           new FormData(skillsForm).forEach((value, key) => skillsFormData[key] = value);
 
