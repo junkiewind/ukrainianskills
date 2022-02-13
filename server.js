@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.get('/data', (req, res) => {
     const python = spawn('python3', ['python/datanalysis.py']);
+    console.log(python)
     // collect data from script
     // res.type('json');
     python.stdout.on('data', function (data) {
