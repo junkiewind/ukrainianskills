@@ -1,6 +1,6 @@
 window.onload = function () {
   let dataForChart = {}
-  const geturl = `${window.location.protocol}//${window.location.host}/data`
+  const geturl = '/data'
   console.log(typeof url)
   console.log('Host: ', geturl)
   function getSkillsData() {
