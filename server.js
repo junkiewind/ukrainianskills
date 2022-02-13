@@ -27,6 +27,7 @@ app.get('/data', (req, res) => {
     // res.type('json');
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ...');
+        
         dataToSend = data.toString();
         //   dataToSend = JSON.parse(dataToSend);
 
@@ -35,6 +36,7 @@ app.get('/data', (req, res) => {
     python.on('close', (code) => {
         console.log(`child process close all stdio with code ${code}`);
         // send data to browser
+        console.log('dataToSend', dataToSend)
         res.send(dataToSend);
     });
 
