@@ -1,8 +1,10 @@
 window.onload = function () {
   let dataForChart = {}
-  console.log('Host: ', window.location.host)
+  const url = `${window.location.protocol}//${window.location.host}/data`
+  console.log(typeof url)
+  console.log('Host: ', url)
   function getSkillsData() {
-    fetch('/data')
+    fetch(url)
       .then(response => response.text())
       .then(data => {
         dataForChart = JSON.parse(data);
@@ -146,7 +148,8 @@ window.onload = function () {
           console.log('skillsFormData', {
             skillsFormData
           })
-          postData('/skills', skillsFormData).then(getSkillsData())
+          postData('/skills', skillsFormData)
+          .then(getSkillsData())
             .then(data => {
               console.log(data);
               formSection1.style.display = "none"
@@ -179,9 +182,10 @@ window.onload = function () {
           console.log('skillsFormData', {
             skillsFormData
           })
-          postData('/skills', skillsFormData).then(getSkillsData())
+          postData('/skills', skillsFormData)
+            .then(getSkillsData())
             .then(data => {
-              console.log(data);
+              console.log('Data', data);
               formSection1.style.display = "none"
               formSection2.style.display = "none"
               formSectionSuccess.style.display = "inline-flex"
