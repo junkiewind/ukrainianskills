@@ -1,10 +1,10 @@
 window.onload = function () {
   let dataForChart = {}
-  const url = `${window.location.protocol}//${window.location.host}/data`
+  const geturl = `${window.location.protocol}//${window.location.host}/data`
   console.log(typeof url)
-  console.log('Host: ', url)
+  console.log('Host: ', geturl)
   function getSkillsData() {
-    fetch(url)
+    fetch(geturl)
       .then(response => response.text())
       .then(data => {
         dataForChart = JSON.parse(data);
