@@ -28,7 +28,7 @@ else {
     console.log('https')
     const options = {
     key: fs.readFileSync(`/etc/letsencrypt/live/klymov.design/privkey.pem`),
-    cert: fs.readFileSync(`/etc/letsencrypt/live/klymov.design/fullchain.pem`)  }
+    cert: fs.readFileSync(`/etc/letsencrypt/live/klymov.design/cert.pem`)  }
     console.log(options)
     https
     .createServer(app, options)
