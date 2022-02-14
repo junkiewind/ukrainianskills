@@ -16,27 +16,24 @@ const {
 } = require('child_process');
 
 if (hostname === "Alexanders-MacBook-Pro.local") {
-http
-    .createServer(app)
-    .listen(80, () => {
-        console.log('server is runing at port 80')
-    });
+    const ssl_key = fs.readFileSync("ssl/key.pem")
+    const ssl_cert = fs.readFileSync("ssl/cert.pem")
+} else {
+    const ssl_key = fs.readFileSync("/etc/letsencrypt/live/klymov.design/privkey.pem")
+    const ssl_cert = fs.readFileSync("/etc/letsencrypt/live/klymov.design/cert.pem")
 }
 
-else {
-    const options = {
-    key: fs.readFileSync(`/etc/letsencrypt/live/klymov.design/privkey.pem`),
-    cert: fs.readFileSync(`/etc/letsencrypt/live/klymov.design/fullchain.pem`)
-};
+// http.createServer(app).listen(80)
+
+
 https
-    
-    .createServer(app, options)
-    .listen(80, () => {
-        console.log('server is runing at port 80')
+    .createServer({
+        key: ssl_key,
+        cert: ssl_cert,
+    }, app)
+    .listen(443, () => {
+        console.log('server is runing at port 443')
     });
-}
-
-
 
 app.set("view enjine", "ejs")
 // app.use(express.urlencoded({
@@ -90,6 +87,8 @@ app.post('/skills', (req, res) => {
 });
 
 app.use(express.static("public"))
+
+
 
 // const port = 80
 // app.listen(port, () => {
