@@ -25,11 +25,12 @@ if (hostname === "Alexanders-MacBook-Pro.local") {
 
 // http.createServer(app).listen(80)
 
+http.createServer(app).listen(80)
 
 https
     .createServer({
-        key: ssl_key,
-        cert: ssl_cert,
+        key: fs.readFileSync("/etc/letsencrypt/live/klymov.design/privkey.pem"),
+        cert: fs.readFileSync("/etc/letsencrypt/live/klymov.design/cert.pem")
     }, app)
     .listen(443, () => {
         console.log('server is runing at port 443')
