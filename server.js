@@ -16,6 +16,7 @@ const {
 } = require('child_process');
 
 if (hostname === "Alexanders-MacBook-Pro.local") {
+    console.log('http')
 http
     .createServer(app)
     .listen(80, () => {
@@ -24,17 +25,19 @@ http
 }
 
 else {
+    console.log('https')
     const options = {
     key: fs.readFileSync(`/etc/letsencrypt/live/klymov.design/privkey.pem`),
-    cert: fs.readFileSync(`/etc/letsencrypt/live/klymov.design/fullchain.pem`)
-};
-https
-    
+    cert: fs.readFileSync(`/etc/letsencrypt/live/klymov.design/fullchain.pem`)  }
+    console.log(options)
+    https
     .createServer(app, options)
-    .listen(80, () => {
-        console.log('server is runing at port 80')
-    });
-}
+            .listen(443, () => {
+                console.log('server is runing at port 443')
+            });
+  
+};
+
 
 
 
